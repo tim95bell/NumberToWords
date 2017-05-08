@@ -1,0 +1,7 @@
+Execution Instructions
+
+1. compile: 
+	javac *.java
+2. run: 	
+	java Main
+3. in a web browser, go to http://localhost:8080
