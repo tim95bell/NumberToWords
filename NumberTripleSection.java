@@ -5,7 +5,7 @@ public class NumberTripleSection extends NumberDoubleSection {
 	
 	public enum Place { HUNDREDS, THOUSANDS, MILLIONS, BILLIONS, TRILLIONS };
 	public static final int MAX_PLACE = 5;
-	public static final String HUNDRED = " HUNDRED ";
+	public static final String HUNDRED = " HUNDRED";
 	public static final String THOUSAND = " THOUSAND ";
 	public static final String MILLION = " MILLION ";
 	public static final String BILLION = " BILLION ";
@@ -109,6 +109,10 @@ public class NumberTripleSection extends NumberDoubleSection {
 	
 	public boolean containsAnd(){
 		return containsAnd;
+	}
+	
+	public boolean isEmpty(){
+		return isEmpty;
 	}
 
 }

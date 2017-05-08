@@ -20,9 +20,9 @@ public class HtmlPage {
 				content += in.nextLine();
 			}
 			
-			String[] split = content.split("</body>");
+			String[] split = content.split("\\{input\\}");
 			topHtml = split[0];
-			bottomHtml = "</head>"+split[1];
+			bottomHtml = split[1];
 		} catch(FileNotFoundException e){
 			e.printStackTrace();
 		}

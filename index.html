@@ -1,14 +1,13 @@
 <html>
     <title>Number to Words Web Page</title>
-    <body>
-        <form action="http://localhost:8080/numberInput" method="get">
-            <div>
-                <label for="number">Enter a number</label>
-                <input name="number" id="number">
-            </div>
-            <div>
-                <button>Send</button>
-            </div>
+    <body style="font-size: 3em;" style="text-align: center">
+        <form action="http://localhost:8080/numberInput" method="get" style="text-align: center;">
+            <div> <label for="number">Enter a number:</label> </div>
+            <div> <input name="number" id="number" style="font-size: 1em"> </div>
+			<div> <button style="font-size: 1em">Convert To Words</button> </div>
         </form>
+		<div style="text-align: center">
+			{input}
+		</div>
     </body>
 </html>

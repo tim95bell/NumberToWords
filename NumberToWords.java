@@ -18,7 +18,8 @@ public class NumberToWords {
 			wholePart = processWholePart(validParts[0]);
 			fractionalPart = processFractionalPart(validParts[1]);
 		}
-		return wholePart + fractionalPart;
+			
+		return "$" + input + "<br>" + wholePart + fractionalPart;
 	}
 	
 	private String processWholePart(String wholePart){
