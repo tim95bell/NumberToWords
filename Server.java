@@ -22,7 +22,7 @@ public class Server {
         while(running){
             Socket socket = serverSocket.accept();
 			SocketThread socketThread = new SocketThread(socket, htmlPage, numberToWords);
-			socketThread.run();
+			socketThread.start();
         }
     }
 	

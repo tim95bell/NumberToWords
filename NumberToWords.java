@@ -18,11 +18,20 @@ public class NumberToWords {
 			wholePart = processWholePart(validParts[0]);
 			fractionalPart = processFractionalPart(validParts[1]);
 		}
+		
+		if(wholePart.equals("NEGATIVE ZERO DOLLARS ") && fractionalPart.length() == 0)
+			return "invalid";
 			
 		return "$" + input + "<br>" + wholePart + fractionalPart;
 	}
 	
 	private String processWholePart(String wholePart){
+		boolean negative = false;
+		if(wholePart.charAt(0) == '-'){
+			negative = true;
+			wholePart = wholePart.substring(1,wholePart.length());
+		}
+		
 		String answer = "";
 		ArrayList<NumberTripleSection> parts = new ArrayList<NumberTripleSection>();
 		int numSections = wholePart.length()/3;
@@ -48,6 +57,9 @@ public class NumberToWords {
 		if(answer.length() == 0){
 			answer = "ZERO";
 		}
+		if(negative ){
+			answer = "NEGATIVE " + answer;
+		}
 		
 		answer += DOLLARS;
 		return answer;
@@ -63,9 +75,14 @@ public class NumberToWords {
 	}
 
 	private String[] validateFormat(String input){
-		//TODO: boolean negative
-		if(input.charAt(0) == '-')
+		boolean negative = false;
+		if(input.charAt(0) == '-'){
 			input = input.substring(1, input.length());
+			negative = true;
+			if(input.length() == 0){
+				input = "0";
+			}
+		}
 		if(input.charAt(0) == '.')
 			input = "0"+input;
 		if(input.charAt(input.length()-1) == '.'){
@@ -75,9 +92,7 @@ public class NumberToWords {
 		String wholePart = "";
 		String fractionalPart = "";
 		if(input.contains(".")){
-			System.out.println(input);
 			String[] split = input.split("\\.");
-			System.out.println(split.length);
 			wholePart = split[0];
 			if(split.length > 2){
 				// more than one decimal point
@@ -125,6 +140,10 @@ public class NumberToWords {
 		// check not to long
 		if(wholePart.length() > NumberTripleSection.MAX_PLACE*3){
 			return null;
+		}
+		
+		if(negative){
+			wholePart = "-"+wholePart;
 		}
 		
 		return new String[]{wholePart, fractionalPart};
